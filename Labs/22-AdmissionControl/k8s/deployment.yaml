@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codewizard-deployment
+  labels:
+    app: codewizard-admission-control
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codewizard-admission-control
+  template:
+    metadata:
+      labels:
+        app: codewizard-admission-control
+    spec:
+      containers:
+        - name: server
+          image: nirgeier/admission_control
+          ports:
+            - containerPort: 3000

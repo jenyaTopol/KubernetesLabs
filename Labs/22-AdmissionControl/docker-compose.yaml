@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+
+  # Build the node server
+  server:
+    build: .
+    image: "nirgeier/admission_control"
+    ports:
+      - "3000:3000"
+    
+    # Map the certificates folder
+    volumes:
+      - "./certs:/src/certs"
+
+    environment:
+          PORT:         3000
+          CERTS_FOLDER: "/src/certs"

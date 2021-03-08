@@ -1,0 +1,15 @@
+namespace: codewizard
+
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+
+secretGenerator:
+  - name: certs
+    type: "kubernetes.io/tls"
+    files:
+    - ./certs/ca.crt
+    - ./certs/tls.crt
+    - ./certs/tls.key
+    
